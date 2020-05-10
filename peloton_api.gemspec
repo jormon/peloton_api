@@ -4,7 +4,7 @@ require "peloton_api/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "peloton_api"
-  spec.version       = PelotonApi::VERSION
+  spec.version       = PelotonAPI::VERSION
   spec.authors       = ["Jordan Moncharmont"]
   spec.email         = ["jormon@gmail.com"]
 

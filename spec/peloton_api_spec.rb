@@ -1,9 +1,5 @@
-RSpec.describe PelotonApi do
+RSpec.describe PelotonAPI do
   it "has a version number" do
-    expect(PelotonApi::VERSION).not_to be nil
-  end
-
-  it "does something useful" do
-    expect(false).to eq(true)
+    expect(PelotonAPI::VERSION).not_to be nil
   end
 end
