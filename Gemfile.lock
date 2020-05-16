@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     peloton_api (0.1.0)
+      zeitwerk
 
 GEM
   remote: https://rubygems.org/
@@ -21,6 +22,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.2)
+    zeitwerk (2.3.0)
 
 PLATFORMS
   ruby
