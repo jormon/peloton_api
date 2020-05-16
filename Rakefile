@@ -10,6 +10,10 @@ task default: :spec
 desc "Verification, prints output summary of last workout to the terminal"
 task :example do
   client = PelotonAPI::Client.new
-  workout = client.workouts.last
-  puts "last workout: #{workout}"
+  users = ['jormon', 'hft21']
+  users.each do |username|
+    user = client.user(user)
+    workouts = client.user_workouts(user)
+    puts "#{username}'s last workout: #{workouts.last}"
+  end
 end
