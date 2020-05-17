@@ -12,8 +12,8 @@ task :example do
   client = PelotonAPI::Client.new
   users = ['jormon', 'hft21']
   users.each do |username|
-    user = client.user(user)
+    user = client.user(username)
     workouts = client.user_workouts(user)
-    puts "#{username}'s last workout: #{workouts.last}"
+    puts "#{username}'s last workout: #{workouts.first}"
   end
 end

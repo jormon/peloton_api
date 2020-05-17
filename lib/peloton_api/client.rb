@@ -21,10 +21,11 @@ module PelotonAPI
       Records::User.new(get("/user/#{username}"))
     end
 
-    def workouts(user)
-      options = { joins: :ride, limit: 10 }
-      r = get("/user/#{user.id}/workouts", options)
-      byebug
+    def user_workouts(user)
+      options = { joins: :ride, limit: 100 }
+      get("/user/#{user.id}/workouts", options)[:data].map do |workout|
+        Records::Workout.new workout
+      end
     end
 
     protected
@@ -35,29 +36,28 @@ module PelotonAPI
       uri.query = URI.encode_www_form(options) if options
 
       request = Net::HTTP::Get.new uri
+      request['User-Agent'] = HEADERS['User-Agent']
       request['Cookie'] = cookie uri
 
-      response = Net::HTTP.get_response uri
+      response = nil
+      Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+        response = http.request request
+      end
 
       if response.is_a? Net::HTTPSuccess
-        # response.get_fields('set-cookie').each do |cookie|
-        #   cookie_jar.parse cookie, uri
-        # end
-
         JSON.parse response.body, symbolize_names: true
       else
-        warn 'bad user get for ' + path + ' ' + response.inspect
+        warn 'bad get for ' + path + ' ' + response.inspect
         byebug
       end
     end
 
     def cookie(uri)
       authenticate unless authenticated
-      ::HTTP::Cookie.cookie_value(cookie_jar.cookies(uri))
+      HTTP::Cookie.cookie_value(cookie_jar.cookies(uri))
     end
 
     def authenticate
-      # do something to authenticate
       uri = URI(BASE_URL + '/auth/login')
 
       data = { username_or_email: configuration.username,

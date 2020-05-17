@@ -1,7 +1,7 @@
 module PelotonAPI
   module Records
-    class Workout
-      fields :id, :start_time, :status
+    class Workout < PelotonObject
+      fields :id, :start_time, :status, :end_time
       field :ride, Ride
     end
   end
