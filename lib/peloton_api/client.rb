@@ -28,6 +28,11 @@ module PelotonAPI
       end
     end
 
+    def workout_performance(workout)
+      Records::PerformanceGraph.new \
+        get("/workout/#{workout.id}/performace_graph")
+    end
+
     protected
 
     def get(path, options = nil)
