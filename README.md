@@ -1,28 +1,22 @@
-# PelotonApi
+# PelotonAPI
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/peloton_api`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem is a simple (WIP) wrapper for the onepeloton API.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'peloton_api'
+gem 'peloton_api', github: 'jormon/peloton_api'
 ```
 
 And then execute:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install peloton_api
+  $ bundle
 
 ## Usage
 
-TODO: Write usage instructions here
+Ensure you have `PELOTON_USERNAME` and `PELOTON_PASSWORD` set as environment variables (and/or use [dotenv](https://github.com/bkeepers/dotenv) and their ilk to manage them).  See very simple example usage in the [Rakefile](/Rakefile).
 
 ## Development
 
