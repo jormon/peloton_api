@@ -11,7 +11,7 @@ module PelotonAPI
       'User-Agent' => "ruby/peloton_api/#{VERSION}",
     }.freeze
 
-    def initialize(configuration: PelotonAPI::Configuration::DEFAULT)
+    def initialize(configuration: PelotonAPI::Configuration.default)
       @configuration = configuration
       @cookie_jar = HTTP::CookieJar.new
       @authenticated = false
@@ -68,6 +68,8 @@ module PelotonAPI
 
     def authenticate
       uri = URI(BASE_URL + '/auth/login')
+
+      configuration.ensure_valid!
 
       data = { username_or_email: configuration.username,
                password: configuration.password }
