@@ -15,7 +15,7 @@ GEM
     dotenv (2.7.5)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    rake (10.5.0)
+    rake (12.3.3)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -42,7 +42,7 @@ DEPENDENCIES
   byebug
   dotenv
   peloton_api!
-  rake (~> 10.0)
+  rake (~> 12.3)
   rspec (~> 3.0)
 
 BUNDLED WITH
