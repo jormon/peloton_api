@@ -21,11 +21,15 @@ module PelotonAPI
       Records::User.new(get("/user/#{username}"))
     end
 
-    def user_workouts(user)
+    def user_workouts(user_id)
       options = { joins: :ride, limit: 100 }
-      get("/user/#{user.id}/workouts", options)[:data].map do |workout|
+      get("/user/#{user_id}/workouts", options)[:data].map do |workout|
         Records::Workout.new workout
       end
+    end
+
+    def ride(ride_id)
+      Records::Ride.new get("/ride/#{ride_id}")
     end
 
     def workout_performance(workout)

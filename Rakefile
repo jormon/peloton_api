@@ -13,7 +13,7 @@ task :example do
   users = ['jormon', 'hft21']
   users.each do |username|
     user = client.user(username)
-    workouts = client.user_workouts(user)
+    workouts = client.user_workouts(user.id)
     puts "#{username}'s last workout: #{workouts.first}"
   end
 end
